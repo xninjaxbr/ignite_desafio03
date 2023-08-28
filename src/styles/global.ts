@@ -18,7 +18,8 @@ export const GlobalsStyle = createGlobalStyle`
     }
     
     body, input, textarea, button{
-       font-family: 'Baloo 2', 'Roboto', sans-serif;
+       font-family: 'Nunito' , sans-serif;
+       line-height: 160%;
 
     }
 
