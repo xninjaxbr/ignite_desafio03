@@ -5,10 +5,12 @@ export const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
+  gap: 0.75rem;
   div {
     display: flex;
     justify-content: space-between;
     p:first-child {
+      padding: 0 0.5rem;
       color: ${(props) => props.theme.baseSubtitle};
       font-size: ${(props) => props.theme.text18};
       font-weight: 700;

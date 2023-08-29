@@ -1,3 +1,14 @@
+import { CardPost } from '../CardPost'
+import { PostContent } from './style'
+
 export function Posts() {
-  return <>Posts</>
+  return (
+    <PostContent>
+      <CardPost />
+      <CardPost />
+      <CardPost />
+      <CardPost />
+      <CardPost />
+    </PostContent>
+  )
 }
