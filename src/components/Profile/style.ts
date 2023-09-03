@@ -45,7 +45,7 @@ export const Title = styled.div`
   justify-content: space-between;
   margin-bottom: 0.5rem;
 
-  button {
+  a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@ export const Title = styled.div`
     font-size: ${(props) => props.theme.text12};
     gap: 0.5rem;
   }
-  button > span > img {
+  a > span > img {
     width: 16px;
   }
   h1 {

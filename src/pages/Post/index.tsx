@@ -4,54 +4,68 @@ import Calendar from '../../assets/calendar.svg'
 import Comment from '../../assets/comment.svg'
 import Back from '../../assets/back.svg'
 import Arrow from '../../assets/arrow.svg'
+import { Link, useParams } from 'react-router-dom'
+import { useContext } from 'react'
+import { PostContext } from '../../Contexts/PostsContext'
+import ReactMarkdown from 'react-markdown'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 
 export function Post() {
+  const routeParams = useParams()
+  const contextPost = useContext(PostContext)
+
+  // eslint-disable-next-line array-callback-return
+  const currentPost = contextPost.posts.posts?.filter((post) => {
+    if (post.numberPost === Number(routeParams.id)) {
+      return post
+    }
+  })[0]
+
   return (
     <>
       <CardContainer>
         <div className="buttons">
-          <a href="/">
+          <Link className="link" to="/">
             <img src={Back} alt="" />
             Voltar
-          </a>
-          <a href="#">
+          </Link>
+          <Link className="link" to={contextPost.posts.perfil?.gitURL}>
             Ver no Github
             <img src={Arrow} alt="" />
-          </a>
+          </Link>
         </div>
-        <h1>JavaScript data types and data structures</h1>
+        <h1>{currentPost?.title}</h1>
         <div>
           <Tags>
             <div>
               <img src={GitBrands} alt="" />
-              cameronwll
+              {contextPost.posts.perfil?.git}
             </div>
             <div>
               <img src={Calendar} alt="" />
-              Rocketseat
+              {formatDistanceToNow(new Date(currentPost?.createdAt), {
+                addSuffix: true,
+                locale: ptBR,
+              })}
             </div>
             <div>
               <img src={Comment} alt="" />
-              32 seguidores
+              {currentPost?.coments} comentários
             </div>
           </Tags>
         </div>
       </CardContainer>
       <PostContent>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aliquam
-        autem laboriosam sed, nulla beatae quia cumque tempore perspiciatis sit!
-        Recusandae rem repellat fugiat magni nam veniam non molestiae
-        consequatur!Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Placeat aliquam autem laboriosam sed, nulla beatae quia cumque tempore
-        perspiciatis sit! Recusandae rem repellat fugiat magni nam veniam non
-        molestiae consequatur!Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Placeat aliquam autem laboriosam sed, nulla beatae quia cumque
-        tempore perspiciatis sit! Recusandae rem repellat fugiat magni nam
-        veniam non molestiae consequatur!Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Placeat aliquam autem laboriosam sed, nulla beatae
-        quia cumque tempore perspiciatis sit! Recusandae rem repellat fugiat
-        magni nam veniam non molestiae consequatur!
-        <div>Markdown</div>
+        <ReactMarkdown
+          components={{
+            img: ({ ...props }) => (
+              <img style={{ maxWidth: '100%' }} alt="" {...props} />
+            ),
+          }}
+        >
+          {currentPost?.body}
+        </ReactMarkdown>
       </PostContent>
     </>
   )

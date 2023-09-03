@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const HeaderContainer = styled.div`
   background-color: ${(props) => props.theme.baseProfile};
@@ -17,7 +18,7 @@ export const HeaderContainer = styled.div`
   }
 `
 
-export const LogoContainer = styled.a`
+export const LogoContainer = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.baseText};
   display: flex;

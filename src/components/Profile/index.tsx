@@ -1,43 +1,42 @@
 import { ProfileContainer, Tags, Title } from './style'
-import Avatar from '../../assets/avatar.png'
 import Arrow from '../../assets/arrow.svg'
 import GitBrands from '../../assets/github-brands.svg'
 import Building from '../../assets/building-solid.svg'
 import UserGroup from '../../assets/user-group.svg'
+import { useContext } from 'react'
+import { PostContext } from '../../Contexts/PostsContext'
 
 export function Profile() {
+  const contextPost = useContext(PostContext)
+
   return (
     <ProfileContainer>
-      <img src={Avatar} alt=""></img>
+      <img src={contextPost.posts.perfil?.avatarImg} alt=""></img>
       <div>
         <div>
           <Title>
-            <h1>Paulo Henrique</h1>
-            <button>
+            <h1>{contextPost.posts.perfil?.nameProf}</h1>
+            <a href={contextPost.posts.perfil?.gitURL}>
               GitHUB
               <span>
                 <img src={Arrow} alt=""></img>
               </span>
-            </button>
+            </a>
           </Title>
-          <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-            viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-            volutpat pulvinar vel mass.
-          </p>
+          <p>{contextPost.posts.perfil?.description}</p>
         </div>
         <Tags>
           <div>
             <img src={GitBrands} alt="" />
-            cameronwll
+            {contextPost.posts.perfil?.git}
           </div>
           <div>
             <img src={Building} alt="" />
-            Rocketseat
+            {contextPost.posts.perfil?.company}
           </div>
           <div>
             <img src={UserGroup} alt="" />
-            32 seguidores
+            {contextPost.posts.perfil?.followers} seguidores
           </div>
         </Tags>
       </div>

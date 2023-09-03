@@ -29,7 +29,10 @@ export const SearchContainer = styled.div`
     background-color: ${(props) => props.theme.baseInput};
     font-size: ${(props) => props.theme.text16};
     color: ${(props) => props.theme.baseLabel};
-    &:focus {
+    &:disabled {
+      opacity: 0.5;
+    }
+    &:not(:disabled):focus {
       color: ${(props) => props.theme.baseText};
       border: 1px solid ${(props) => props.theme.blue};
     }

@@ -1,23 +1,36 @@
+import ReactMarkdown from 'react-markdown'
 import { CardContainer } from './style'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import remarkUnlink from 'remark-unlink'
 
-export function CardPost() {
+interface IcardPostprops {
+  numberPost: number
+  title: string
+  body: string
+  createdAt: Date
+}
+
+export function CardPost({
+  numberPost,
+  title,
+  body,
+  createdAt,
+}: IcardPostprops) {
   return (
-    <CardContainer>
+    <CardContainer to={`/post/${numberPost}`} key={numberPost}>
       <div>
-        <h1>JavaScript data types and data structures</h1>
-        <span>1 dia atrás</span>
+        <h1>{title}</h1>
+        <span>
+          {formatDistanceToNow(createdAt, {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </span>
       </div>
-
-      <p>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in Programming languages all have
-        built-in data structures, but these often differ from one language to
-        another. This article attempts to list the built-in data structures
-        available in Programming languages all have built-in data structures,
-        but these often differ from one language to another. This article
-        attempts to list the built-in data structures available in
-      </p>
+      <div className="markdown">
+        <ReactMarkdown remarkPlugins={[remarkUnlink]}>{body}</ReactMarkdown>
+      </div>
     </CardContainer>
   )
 }

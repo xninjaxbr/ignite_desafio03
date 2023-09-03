@@ -12,7 +12,8 @@ export const CardContainer = styled.div`
     display: flex;
     justify-content: space-between;
   }
-  a {
+
+  .link {
     display: flex;
     justify-content: center;
     text-decoration: none;
@@ -44,6 +45,7 @@ export const Tags = styled.div`
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
+  color: ${(props) => props.theme.baseSpan};
   div {
     display: flex;
     justify-content: center;
@@ -52,6 +54,7 @@ export const Tags = styled.div`
   }
   img {
     width: 1rem;
+    fill: ${(props) => props.theme.baseSpan};
   }
 
   @media (max-width: 450px) {

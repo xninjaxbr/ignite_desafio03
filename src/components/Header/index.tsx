@@ -9,7 +9,7 @@ export function Header() {
         <img src={Effectsvg} alt="" />
       </div>
 
-      <LogoContainer href="/">
+      <LogoContainer to="/">
         <img className="image" src={Logo} alt="" />
         <span>GITHUB BLOG</span>
       </LogoContainer>
