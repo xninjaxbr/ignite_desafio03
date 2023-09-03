@@ -23,4 +23,4 @@ Sinta-se à vontade para contribuir com melhorias neste projeto. Você pode abri
 
 ## Licença
 
-Este projeto é licenciado sob a MIT License. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto é licenciado sob a MIT License.
